@@ -239,12 +239,12 @@ def return_best_threshold(thr_sweep,val_emb_dist,val_label_int,sel_linkage):
         Input:  
                 thr_sweep: numpy array :range of values to scan over for the best threshold
                 val_emb_dist: numpy array: pairwise distances from each node in the validation set to every other node in the set 
-        val_label_int: numpy array: lables in integer (transformed from one hot codes) 
-        sel_linkage: string: kind of linkage to be used in AHC
+        	val_label_int: numpy array: lables in integer (transformed from one hot codes) 
+        	sel_linkage: string: kind of linkage to be used in AHC
 
         Output:
-        best_thr_train: float: threshold yielding the highest accuracy
-        thr_sweep_res_pd: dataframe: contains threshold values, yielded accuracy, error
+        	best_thr_train: float: threshold yielding the highest accuracy
+        	thr_sweep_res_pd: dataframe: contains threshold values, yielded accuracy, error
     '''
 
     thr_sweep_res = []
@@ -289,9 +289,16 @@ def tune_threshold_valset(val_emb_dist,val_label_int,sel_linkage):
 
 # +
 def return_best_minpt(pt_range,n_lbl,val_emb_dist,val_label_int):
-    ''' Returns value of best HDBSCAN min points. to obtain the best accuracy.. used for paramter tuning in validation set
-    Argument: a range of percentages.
-    The fnc. turns the percentages into number of points.'''
+    ''' Returns value of best HDBSCAN min points to obtain the best accuracy used for paramter tuning in validation set.
+	The fnc. turns the percentages into number of points.
+   		Input:
+			pt_range: numpy array: range of possible min points in percent
+			n_lbl : integer: number of labels
+			val_emb_dist: numpy array: pairwise distances of the embeddings in the validation set
+			val_label_int: numpy array: validation set labels in iteger 
+    		Outut:	bst_min_pts_val: integer: min_pts giving the gighest accuracy 
+			bst_min_pts_pd: data frame: contains tried min_pts, yielded accuracies, and error count
+			'''
     bst_min_pts = []
 
     for j_pt in pt_range:
