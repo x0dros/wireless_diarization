@@ -48,9 +48,8 @@ from scipy.spatial.distance import cosine
 
 # %%
 #specialized functions for UWDNet training
-from utils import return_optimal_indexing
 from UWDNet_helper_functions import get_mgntd, scale_data, time_in_h_m_s, make_pairs, dist_output_shape, compute_accuracy,\
-                                        get_npkt_nlbl, merge_labels, tune_threshold_valset, tune_hdbscan
+                                        get_npkt_nlbl, merge_labels, tune_threshold_valset, tune_hdbscan, return_optimal_indexing
 
 
 # %%
@@ -179,6 +178,7 @@ if(not os.path.exists(save_dir)):
 
 # %%
 # ### Evaluate UWDNet with 5-fold cross-validation 
+t_strt_all = time.time()
 
 #to store cv results
 cv_test_res = []

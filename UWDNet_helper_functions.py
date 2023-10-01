@@ -6,6 +6,7 @@
 
 import numpy as np
 import math
+import pandas as pd
 from UWDNet_config import seed_val, n_pair
 
 from sklearn.cluster import AgglomerativeClustering
@@ -282,7 +283,7 @@ def tune_threshold_valset(val_emb_dist,val_label_int,sel_linkage):
     if(best_thr_val_coarse>0.9):
         best_thr_val_coarse = 0.9       
     best_thr_val, thr_sweep_res_pd  = return_best_threshold(np.arange(best_thr_val_coarse-0.1,
-                                      best_thr_val_coarse+0.1,0.01),val_emb_dist,val_label_int)
+                                      best_thr_val_coarse+0.1,0.01),val_emb_dist,val_label_int,sel_linkage)
     
     return best_thr_val
 
